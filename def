@@ -1,0 +1,21 @@
+      create  app/controllers/welcome_controller.rb
+       route  get 'welcome/index'
+       route  get 'welcome/='
+      invoke  haml
+      create    app/views/welcome
+      create    app/views/welcome/=.html.haml
+      create    app/views/welcome/index.html.haml
+      invoke  rspec
+      create    spec/controllers/welcome_controller_spec.rb
+      create    spec/views/welcome
+      create    spec/views/welcome/=.html.haml_spec.rb
+      create    spec/views/welcome/index.html.haml_spec.rb
+      invoke  helper
+      create    app/helpers/welcome_helper.rb
+      invoke    rspec
+      create      spec/helpers/welcome_helper_spec.rb
+      invoke  assets
+      invoke    coffee
+      create      app/assets/javascripts/welcome.coffee
+      invoke    scss
+      create      app/assets/stylesheets/welcome.scss
