@@ -1,0 +1,24 @@
+.col-md-6.col-md-offset-3  
+  .text-center
+    %h2
+      Student Information
+    = link_to "Back to Students", students_path
+    %br
+    = link_to "Edit", edit_student_path(@student)
+    |
+    = link_to "Delete", student_path(@student), method: :delete
+    %br
+    Last updated by:
+    = @teacher.user.email
+.row
+  .col-md-6.col-md-offset-3
+    .list-group-item
+      .text-center
+        %strong 
+        = @student.first_name
+        %br
+        %strong
+          Grade Level:
+        = @student.grade
+        %br
+    %br

@@ -1,0 +1,46 @@
+=form_for(@teacher) do |f|
+  - if @teacher.errors.any?
+    - @teacher.errors.full_messages.each do |message|
+      = message
+= form_for @teacher do |f|
+  .form-group
+    .list-group-item
+      %br
+        = f.label :prefix
+        = f.radio_button(:prefix, "Mr.")
+        = f.label(:prefix, "Mr.")
+        = f.radio_button(:prefix, "Mrs.")
+        = f.label(:prefix, "Mrs.")
+        = f.radio_button(:prefix, "Miss.")
+        = f.label(:prefix, "Miss.")
+        = f.radio_button(:prefix, "Ms.")
+        = f.label(:prefix, "Ms.")
+      %br
+      = f.label :name
+      = ':'
+      = f.text_field :name, class: "form-control"
+      %br
+      .form-group
+        = f.label :grade
+        = ':'
+        = f.text_area :grade, class: "form-control"
+      %br
+      .form-group
+        = f.label :email
+        = ':'
+        = f.text_area :email, class: "form-control"
+    .list-group-item
+      %strong
+        Reading Programs Taught:
+        %br
+      .checkbox
+        - @programs.each do |program|
+          %label
+            = check_box_tag 'teacher[program_ids][]', program.id, @teacher.programs.include?(program)
+            = program.focus
+          %br
+  %br
+  .col-md-1.col-md-offset-4
+  =f.submit "Submit", class: "btn btn-primary"
+
+

@@ -1,3 +1,19 @@
 h1{
-  font-family: 'Poiret One', cursive;
+  font-family: 'Oxygen', sans-serif;
+}
+.carousel-caption {
+  text-shadow: 4px 4px #100000 ;
+}
+
+.footer {
+  
+  margin-bottom: 20px;
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 1.4;
+}
+.logo {
+  image(
+    height: 25px;
+    width: 25px); 
 }
