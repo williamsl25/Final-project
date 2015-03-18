@@ -11,7 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150312203612) do
+ActiveRecord::Schema.define(version: 20150315215947) do
+
+  create_table "cbms", force: :cascade do |t|
+    t.integer  "score",        limit: 4
+    t.string   "description",  limit: 255
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+    t.integer  "student_id",   limit: 4
+    t.integer  "cbmable_id",   limit: 4
+    t.string   "cbmable_type", limit: 255
+    t.date     "date_taken"
+  end
 
   create_table "comments", force: :cascade do |t|
     t.text     "content",          limit: 65535
@@ -66,6 +77,18 @@ ActiveRecord::Schema.define(version: 20150312203612) do
     t.string   "prefix",       limit: 255
     t.string   "email",        limit: 255
     t.integer  "user_id",      limit: 4
+  end
+
+  create_table "tests", force: :cascade do |t|
+    t.integer  "score",         limit: 4
+    t.string   "description",   limit: 255
+    t.date     "date"
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+    t.integer  "student_id",    limit: 4
+    t.integer  "testable_id",   limit: 4
+    t.string   "testable_type", limit: 255
+    t.date     "date_taken"
   end
 
   create_table "users", force: :cascade do |t|

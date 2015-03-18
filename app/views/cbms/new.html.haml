@@ -1,0 +1,14 @@
+
+.container.marketing 
+  .text-center 
+    .row.featurette
+      .col-md-6.col.col-lg-6
+      %h4.featurette-heading
+        %br
+        Add a New CBM Score
+      = link_to "Cancel", new_cbm_path
+.row
+  .col-md-6.col-md-offset-3
+    = render 'form'
+    %br
+    %br

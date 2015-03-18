@@ -1,0 +1,40 @@
+= form_for(@cbm) do |f|
+  - if @cbm.errors.any?
+    - @cbm.errors.full_messages.each do |message|
+      = message
+= form_for @cbm do |f|
+  .form-group
+    .list-group-item
+      %br
+      .form-group
+        = f.label :date_taken
+        = f.date_field :date_taken, :start_year => Date.today.year - 5, :end_year => Date.today.year, class: "form-control"
+      
+      %br
+        = f.label :score
+        = ':'
+        = f.text_field :score, class: "form-control"
+      %br
+        = f.label :description
+        %br
+        = f.radio_button(:description, "At Grade Level")
+        = f.label(:description, "At Grade Level")
+        %br
+        = f.radio_button(:description, "Below Grade Level")
+        = f.label(:description, "Below Grade Level")
+        %br
+        = f.radio_button(:description, "Well Below Grade Level")
+        = f.label(:description, "Well Below Grade Level")
+      %br
+    .list-group-item
+      %strong
+        Student CBM score:
+        %br
+        = f.label :score
+        = f.select :student_id, options_for_select(Student.all.map{ |s| [s.first_name, s.id]}, f.object.score), include_blank: "---Select---"
+        / = f.select :score, options_for_select((1..100).step(1)), include_blank: "---Select---"
+        %br 
+
+  %br
+  .col-md-1.col-md-offset-4
+  =f.submit "Submit", class: "btn btn-primary"

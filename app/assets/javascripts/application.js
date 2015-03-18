@@ -13,6 +13,8 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap.min
+//= require rafael
+//= require morris
 //= require angular.min
 //= require underscore.min
 //= require welcome

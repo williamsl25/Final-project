@@ -6,14 +6,15 @@
         %br
       = link_to "Add a Teacher", new_teacher_path
   - @teachers.each do |teacher|
-    .col-md-4
-      .list-group-item
-        .text-center
-          = link_to teacher.name, teacher_path(teacher)
+    .teachlist
+      .col-md-4
+        .list-group-item.teachlist
+          .text-center
+            = link_to teacher.name, teacher_path(teacher)
+            
+            %br
+            = link_to "Edit Teacher", edit_teacher_path(teacher)
+            |
+            = link_to "Delete Teacher", teacher_path(teacher), method: :delete
+            %br
           
-          %br
-          = link_to "Edit Teacher", edit_teacher_path(teacher)
-          |
-          = link_to "Delete Teacher", teacher_path(teacher), method: :delete
-          %br
-          %br

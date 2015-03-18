@@ -1,0 +1,45 @@
+=form_for(@program) do |f|
+  - if @program.errors.any?
+    - @program.errors.full_messages.each do |message|
+      = message
+= form_for @program do |f|
+  .form-group
+    .list-group-item
+      %br   
+      .form-group
+      = f.label :name
+      = ':'
+      = f.text_field :name, class: "form-control"
+      %br
+      .form-group      
+        = f.label :focus
+        = f.select :focus,options_for_select( Program:: FOCUS_OPTIONS, f.object.focus), include_blank: "---select---" |
+      %br 
+      .form-group      
+        = f.label :description
+        = f.text_area :description, class: "form-control"
+      %br   
+      
+    .list-group-item
+      %strong
+        Teacher:
+        %br
+      .checkbox
+        - @teachers.each do |teacher|
+          %label
+            = check_box_tag 'program[teacher_ids][]', teacher.id, @program.teachers.include?(teacher)
+            = teacher.name
+          %br
+    .list-group-item
+      %strong
+        Students in the program:
+        %br
+      .checkbox
+        - @students.each do |student|
+          %label
+            = check_box_tag 'program[student_ids][]', student.id, @program.students.include?(student)
+            = student.first_name
+          %br
+  %br
+  .col-md-1.col-md-offset-4
+  =f.submit "Submit", class: "btn btn-primary"

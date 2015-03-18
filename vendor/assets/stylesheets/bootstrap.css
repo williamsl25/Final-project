@@ -1089,8 +1089,9 @@ textarea {
   line-height: inherit;
 }
 a {
-  color: #337ab7;
+  color: #424242;
   text-decoration: none;
+  
 }
 a:hover,
 a:focus {
@@ -6109,6 +6110,7 @@ button.close {
   position: absolute;
   top: 0;
   width: 100%;
+
 }
 .carousel-inner > .next {
   left: 100%;
@@ -6208,6 +6210,7 @@ button.close {
   margin-left: -30%;
   text-align: center;
   list-style: none;
+  padding-bottom: 5px;
 }
 .carousel-indicators li {
   display: inline-block;

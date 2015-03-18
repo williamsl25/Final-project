@@ -10,9 +10,10 @@ class StudentsController < ApplicationController
   def show
     @student = Student.find params[:id]
     @programs = @student.programs
-    @programs = Program.all
     @teachers = Teacher.all
     @comment = Comment.new
+    @cbm = Cbm.new
+    @cbms = @student.cbms
   end
 
   def new
@@ -42,7 +43,11 @@ class StudentsController < ApplicationController
     @comment = @student.comments.create comment_params
     redirect_to student_path(@student)
   end
-
+  def create_student_cbm
+    @student = Student.find params[:id]
+    @cbm = @student.cbms.create cbm_params
+    redirect_to student_path(@student)
+  end
 
   def update
     @student = Student.find params[:id] 
@@ -65,6 +70,12 @@ class StudentsController < ApplicationController
     redirect_to @comment.commentable
   end
 
+  def destroy_student_cbm
+    @cbm = Cbm.find params[:id]
+    @cbm.destroy
+    redirect_to @cbm.cbmable
+  end
+
   def student_params
     params.require(:student).permit(
       :first_name,
@@ -73,13 +84,23 @@ class StudentsController < ApplicationController
       :gender,
       :strengths,
       :weaknesses,
-      program_id: []
+      teacher_ids: [],
+      program_ids: []
     )
   end
 
   def comment_params
     params.require(:comment).permit(
       :content
+      )
+
+  end
+  def student_cbm_params
+    params.require(:comment).permit(
+      :date_taken,
+      :score,
+      :description,
+      :student_id,
       )
 
   end

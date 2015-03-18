@@ -1,0 +1,62 @@
+.container.marketing  
+  .row.featurette
+    .col-md-6.col-lg-6      
+      %h2.featurette-heading
+        = @program.name
+        %span.text-muted 
+          = @program.focus
+
+      = link_to "Back to Programs", programs_path
+      %br
+      = link_to "Edit", edit_program_path(@program)
+      |
+      = link_to "Delete", program_path(@program), method: :delete
+      %br
+.row
+  .col-md-6.col-md-offset-3
+    .list-group-item
+      .text-center
+        %strong
+          Description:
+        = @program.description
+        %br
+    %br
+    .list-group-item
+      .text-center
+        %strong
+          Teacher(s):
+          %br
+        - @teachers.each do |teacher|
+          = teacher.name 
+          %br
+    %br
+    .list-group-item
+      .text-center
+        %strong
+          Students in the reading program:
+          %br
+        - @students.each do |student|
+          = student.first_name + ' ' + student.last_name
+          %br
+    %br
+    .list-group-item
+      %strong
+        .text-center
+          Internal Program Comments:
+      %ul
+        - @program.comments.each do |comment|
+          %li
+            = comment.content
+            |
+            =link_to "Delete Comment", destroy_comment_program_path(comment), method: :delete
+      %br
+      = form_for @comment, url: create_comment_program_path(@program) do |f|
+        .form-group
+          .text-center
+            = f.label :content, "Add Comment:"
+          = f.text_area :content, class: "form-control"
+          %br
+          .text-center
+            = f.submit "Submit Comment", class: "btn btn-primary"
+
+      

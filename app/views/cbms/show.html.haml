@@ -1,0 +1,42 @@
+.container.marketing  
+  .row.featurette
+    .col-md-6.col-lg-6
+      %h2.featurette-heading
+        Student CBM Data
+      = link_to "Back to Students", students_path
+      %br
+      = link_to "Edit", edit_student_cbm_path(@student, @cbm)
+      |
+      = link_to "Delete", student_cbm_path(@student, @cbm), method: :delete
+    
+.row
+  .col-md-6.col-md-offset-3
+    .list-group-item
+      .text-center
+        .lead 
+          = @cbm.date_taken
+        %strong
+          Date:
+        = @student.cbm.date_taken
+        %br
+        %strong
+          Score:
+        = @student.cbm.score
+        %br
+        %strong
+          Description:
+        = @student.cbm.description
+        %br
+        %br
+        %p.lead.teaching 
+          I am in the following reading group(s):
+          %br
+        - @programs.each do |program|
+          %h3.lead
+            = program.name 
+          Focus:
+          = program.focus
+          %br
+          
+
+          / how do I get student programs to be displayed

@@ -10,25 +10,29 @@
       |
       = link_to "Delete", teacher_path(@teacher), method: :delete
 
-.container.marketing      
-  .row.featurette
+.container    
+  .row.featurette 
     .col-md-6.col-lg-6
       .list-group-item
         .text-center
-          %p.lead 
+          %p.lead.teaching 
             I teach the following reading groups:
             %br
           - @programs.each do |program|
-            %strong 
+            %h3.lead
               = program.name 
-            %br
-              Focus:
-              = program.focus
+            Focus:
+            = program.focus
+          %br
 .container.marketing      
   .row.featurette
     .col-md-6.col-lg-6
       %br
       = link_to "Back to teachers", teachers_path
+      |
+      = link_to "Students", students_path
+      |
+      = link_to "Programs", programs_path
           
    
             

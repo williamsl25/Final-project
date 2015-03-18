@@ -1,0 +1,26 @@
+.container.marketing  
+  .row
+    .col-md-6.col-lg-6      
+      %br
+      %h2.featurette-heading
+        Program Information
+        %br
+      = link_to "Add a Program", new_program_path
+  
+  - @programs.each do |program|
+
+    .col-md-4.col-lg-12
+      .list-group-item
+        .text-center
+          = link_to program.name, program_path(program)
+          
+          %br
+          = link_to "Edit program", edit_program_path(program)
+          |
+          = link_to "Delete program", program_path(program), method: :delete
+          %br
+
+    / %br
+    / = link_to "Edit", edit_program_path(@program)
+    / |
+    / = link_to "Delete", program_path(@program), method: :delete
