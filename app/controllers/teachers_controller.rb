@@ -1,20 +1,36 @@
 class TeachersController < ApplicationController
+  # before_action :authenticate_user!
   def index
-    @teachers = if !params[:q].blank?
-      Teacher.where("name LIKE ? OR grade LIKE ? OR email LIKE ? OR program_id LIKE ?", "%#{params[:q]}%", "%#{params[:q]}%", "%#{params[:q]}%", "%#{params[:q]}%")
-    else
+    # @user = current_user
+    # if @user.admin_status
+      # @teacher = Teacher.all
+    # else 
+    #   flash[:notice] = "You are not authorized to add an assignment"
+    #   redirect_to assignments_path
+    # end
+    # @teachers = if !params[:q].blank?
+    #   Teacher.where("name LIKE ? OR grade LIKE ? OR email LIKE ? OR program_id LIKE ?", "%#{params[:q]}%", "%#{params[:q]}%", "%#{params[:q]}%", "%#{params[:q]}%")
+    # else
       @teachers = Teacher.all
-
-    end
-
+    # end
   end
 
   def new
-    @teacher = Teacher.new
-    @programs = Program.all
+    # @user = current_user
+    # if @user.admin_status
+      @teacher = Teacher.new
+    # else 
+    #   flash[:notice] = "You are not authorized to add an assignment"
+      # redirect_to assignments_path
+    # end
+    @programs = Program.all  
   end
+
+
   def show
     @teacher = Teacher.find params[:id]
+    # @teacher.user = current_user
+    @students = @teacher.students
     @programs = if !params[:q].blank?
       @teacher.programs.where("name LIKE ? OR focus LIKE ? OR student_id LIKE ?", "%#{params[:q]}%", "%#{params[:q]}%", "%#{params[:q]}%")
     else
@@ -23,16 +39,23 @@ class TeachersController < ApplicationController
   end
 
   def create
+    # @user = current_user
+    # if @user.admin_status
     @teacher = Teacher.create teacher_params
-    if @teacher.save
-      flash[:notice] = 'Teacher was successfully created'
-      redirect_to @teacher
-    else
-      flash[:alert] = "Teacher was NOT saved"
-      render :new
-    end
+    # @teacher.user = @user
+      if @teacher.save
+        flash[:notice] = 'Teacher was successfully created'
+        redirect_to @teacher
+      else
+        flash[:error] = "Teacher was NOT saved"
+        render :new
+      end
+    # else 
+    # flash[:notice] = "You are not authorized to create an teacher"
+    # redirect_to teachers_path
   end
-  
+  # end
+
   def edit
     @teacher = Teacher.find params[:id]
     @programs = Program.all
@@ -40,22 +63,35 @@ class TeachersController < ApplicationController
   end
 
   def update
-    @teacher = Teacher.find params[:id]
-    @teacher.update_attributes teacher_params
-    if @teacher.update_attributes teacher_params
-      flash[:notice] = "Teacher was successfully Updated."
-      redirect_to teachers_path
-    else
-      flash[:alert] = "Teacher was NOT updated."
-      render :edit
-    end
-
+    # @user = current_user
+    # if @user.admin_status
+      @submissions = Submission.all 
+      @teacher = Teacher.find params[:id]
+      # @teacher.user = current_user
+      if @teacher.update_attributes teacher_params
+        flash[:notice] = "Teacher was successfully Updated."
+        redirect_to teachers_path
+      else
+        flash[:error] = "Teacher was NOT updated."
+        render :new
+      end
+    # else 
+    #   flash[:notice] = "You are not authorized to update a teacher"
+    #   redirect_to teachers_path
+    # end
   end
 
   def destroy
-    @teacher = Teacher.find params[:id]
-    @teacher.delete
-    redirect_to teachers_path
+    # @user = current_user
+    # if @user.admin_status
+      @teacher = Teacher.find params[:id]
+      @teacher.delete
+      flash[:notice] = "#{@teacher.name}"
+      redirect_to teachers_path
+    # else 
+    #   flash[:notice] = "You are not authorized to update a teacher"
+    #   redirect_to teachers_path
+    # end
   end
 
   private
@@ -67,7 +103,8 @@ class TeachersController < ApplicationController
       :grade,
       :email,
       :admin_status,
-      program_ids: []
+      program_ids: [],
+      user_id: []
       )
   end
   

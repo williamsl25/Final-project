@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150315215947) do
+ActiveRecord::Schema.define(version: 20150319200117) do
 
   create_table "cbms", force: :cascade do |t|
     t.integer  "score",        limit: 4
@@ -30,6 +30,7 @@ ActiveRecord::Schema.define(version: 20150315215947) do
     t.string   "commentable_type", limit: 255
     t.datetime "created_at",                     null: false
     t.datetime "updated_at",                     null: false
+    t.integer  "user_id",          limit: 4
   end
 
   create_table "program_students", force: :cascade do |t|
@@ -54,6 +55,7 @@ ActiveRecord::Schema.define(version: 20150315215947) do
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false
     t.text     "description", limit: 65535
+    t.integer  "user_id",     limit: 4
   end
 
   create_table "students", force: :cascade do |t|
@@ -66,6 +68,7 @@ ActiveRecord::Schema.define(version: 20150315215947) do
     t.date     "date_of_birth"
     t.string   "grade",         limit: 255
     t.string   "gender",        limit: 255
+    t.integer  "user_id",       limit: 4
   end
 
   create_table "teachers", force: :cascade do |t|
@@ -89,6 +92,13 @@ ActiveRecord::Schema.define(version: 20150315215947) do
     t.integer  "testable_id",   limit: 4
     t.string   "testable_type", limit: 255
     t.date     "date_taken"
+  end
+
+  create_table "user_students", force: :cascade do |t|
+    t.integer  "user_id",    limit: 4
+    t.integer  "student_id", limit: 4
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
   end
 
   create_table "users", force: :cascade do |t|

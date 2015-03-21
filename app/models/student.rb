@@ -7,6 +7,8 @@ class Student < ActiveRecord::Base
   has_many :comments, as: :commentable
   has_many :tests
   has_many :cbms
-
+  belongs_to :user
+  has_many :user_students
+  has_many :users, through: :user_students
 
 end

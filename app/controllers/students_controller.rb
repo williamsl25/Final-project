@@ -4,8 +4,8 @@ class StudentsController < ApplicationController
     @students = Student.all
     @programs = Program.all
     @teachers = Teacher.all
+    authorize! :read, Student
   end
-
 
   def show
     @student = Student.find params[:id]
@@ -14,12 +14,13 @@ class StudentsController < ApplicationController
     @comment = Comment.new
     @cbm = Cbm.new
     @cbms = @student.cbms
+    authorize! :read, @student
   end
 
   def new
     @student = Student.new
     @programs = Program.all
-
+    authorize! :create, @student
   end
 
   def edit
@@ -29,6 +30,7 @@ class StudentsController < ApplicationController
 
   def create
     @student = Student.create student_params
+    @student.user = current_user
     if @student.save
       flash[:notice] = 'student was successfully created.'
       redirect_to students_path
@@ -41,8 +43,18 @@ class StudentsController < ApplicationController
   def create_comment
     @student = Student.find params[:id]
     @comment = @student.comments.create comment_params
+    @comment.commentable = @student
+    @comment.user = current_user
+    if @comment.save
+    @comment.save
+      UserMailer.comment_email(current_user, @comment).deliver
+      UserMailer.student_user_comment_email(@student, @comment).deliver
     redirect_to student_path(@student)
+    else
+      render :new
+    end
   end
+
   def create_student_cbm
     @student = Student.find params[:id]
     @cbm = @student.cbms.create cbm_params
@@ -50,23 +62,29 @@ class StudentsController < ApplicationController
   end
 
   def update
-    @student = Student.find params[:id] 
+    @student = Student.find params[:id]
+    @teacher.user = current_user 
       if @student.update_attributes student_params
+      flash[:notice] = "Student was successfully updated!"
       redirect_to student_path(@student)
-    else 
-      render :new
+    else
+      flash[:error] = "Student was NOT updated." 
+      render :edit
     end
   end
 
   def destroy
     @student = Student.find params[:id]
+    @teacher.user = current_user
     @student.delete
+    flash[:notice] = "Student successfully deleted"
     redirect_to students_path
   end
 
   def destroy_comment
     @comment = Comment.find params[:id]
     @comment.destroy
+    # authorize! :destroy_comment, @comment
     redirect_to @comment.commentable
   end
 
@@ -91,7 +109,8 @@ class StudentsController < ApplicationController
 
   def comment_params
     params.require(:comment).permit(
-      :content
+      :content,
+      :user_id
       )
 
   end
@@ -101,6 +120,7 @@ class StudentsController < ApplicationController
       :score,
       :description,
       :student_id,
+      :user_id
       )
 
   end

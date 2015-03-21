@@ -9,7 +9,6 @@ gem 'quiet_assets'
 gem 'devise'
 gem 'cancancan', '~> 1.10'
 
-gem "chartkick"
 gem 'groupdate', '~> 2.1.1'
 gem 'active_median', '~> 0.1.0'
 

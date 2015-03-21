@@ -1,20 +1,26 @@
-.container.marketing  
+.container 
   .row
-    .col-md-6.col-lg-6      
+    .col-md-12.col-lg-6.program     
       %br
-      %h2.featurette-heading
+      %h2.program
         Program Information
         %br
+.container
+  .row
+    .col-md-6.col-lg-6
+    - if can? :create, Program
       = link_to "Add a Program", new_program_path
   
-  - @programs.each do |program|
-
+- @programs.each do |program|
+  .div
     .col-md-4.col-lg-12
-      .list-group-item
-        .text-center
-          = link_to program.name, program_path(program)
+      .list-group-item.programs
+        .text-center.programback
+          .programlist
+            = link_to program.name, program_path(program)
           
           %br
+        - if can? :update, Program  
           = link_to "Edit program", edit_program_path(program)
           |
           = link_to "Delete program", program_path(program), method: :delete

@@ -22,5 +22,7 @@ module Meeting
 
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
+    config.assets.paths.push("#{Rails.root}/vendor/assets/fonts")
+    config.action_mailer.default_url_options = { host: 'example.com' }
   end
 end

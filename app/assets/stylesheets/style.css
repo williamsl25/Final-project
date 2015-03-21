@@ -1,51 +1,52 @@
 h1{
-  font-family: 'Oxygen', sans-serif;
+  font-family: 'Open Sans Condensed', sans-serif;
 }
-.carousel-caption {
-  text-shadow: 4px 4px #100000 ;
+.logo {
+  font-family: 'Satisfy', cursive;
+  font-size: 65px;
+  text-shadow: black;
+}
+body {
+  background-size: cover;
+  background-color: #33ee67;
+  border: ridge;
+  border-width: 15px;
+  border-color: black;
 }
 
 .footer {
-  
   margin-bottom: 20px;
   font-size: 16px;
   font-weight: 300;
   line-height: 1.4;
 }
-.logo {
-  display: inline-block;
-  float: left;
-  padding-top: 5px;
-  padding-right: 10px;
-  
+p.alert {
+  margin-top: -50px;
+}
+.noticemsg {
+  margin-top: 0px;
+  color: red;
+  line-height: 1.4;
+  margin-bottom: 0px;
+  background-color: transparent;  
 }
 
-.logo img {
-    height: 40px;
-    width: 90px); 
-}
 
-body {
-  background: url(books1.png) no-repeat center center fixed;
+.studentbackground {
+  background: url(kids_hands_up.jpg) no-repeat center center fixed;
   background-size: cover;
-
 }
+
 .container.marketing {
   color: black;
   font-weight: bold;
   
-
 }
 .teaching  {
   border-style: double;
   box-shadow: 10px 10px 5px #A4A4A4;
 }
-.teachlist:hover {
-  background-color: #A9BCF5;
-  cursor: pointer;
-  font-variant: small-caps;
-  
-}
+
 .cbm {
   background-color: white;
   opacity: .8;
@@ -54,4 +55,110 @@ body {
 .links {
   margin-top: 100px;
   margin-left: 25px;
+}
+.alert {
+  margin-top: 75px;
+  margin-left: 25px;
+}
+.program_header {
+  margin-top: 5px;
+  margin-left: 25px;
+  text-align: left;
+}
+.teacher {
+  margin-top: 5px;
+  margin-left: 5px;
+  font-family: 'Open Sans Condensed', sans-serif;
+  font-size: 75px;
+}
+.teachlist {
+  font-size: 20px;
+  font-family: 'Open Sans Condensed', sans-serif;
+  font-variant: small-caps;
+  color: black;
+}
+.teachers{
+  opacity: .8;
+  background-color: grey;
+  
+}
+.back {
+  background-color: white;
+
+}
+.program {
+  margin-top: -50px;
+  margin-left: 5px;
+  font-family: 'Open Sans Condensed', sans-serif;
+  font-size: 75px;
+}
+.programname {
+  margin-top: -30px;
+  margin-left: 5px;
+  font-family: 'Open Sans Condensed', sans-serif;
+  font-size: 45px;
+}
+.programlist {
+  font-size: 20px;
+  font-family: 'Open Sans Condensed', sans-serif;
+  font-variant: small-caps;
+  color: black;
+}
+.programs{
+  opacity: .8;
+  background-color: grey;
+  
+}
+.programback {
+  background-color: white;
+
+}
+.teachbox {
+  background-color: transparent;
+  margin-top: 100px;
+  font-family: 'Open Sans Condensed', sans-serif;
+  font-variant: small-caps;
+}
+.studentbox {
+  background-color: transparent;
+  margin-top: 100px;
+  font-family: 'Open Sans Condensed', sans-serif;
+  font-variant: small-caps;
+}
+.programbox {
+  background-color: transparent;
+  margin-top: 100px;
+  font-family: 'Open Sans Condensed', sans-serif;
+  font-variant: small-caps;
+}
+.blurb {
+  padding: 120px 0;
+  background-color:#33ee67;
+}
+
+.blurb .panel {
+  background-color:transparent;
+}
+.panelback {
+  background-color: #33ee67;
+  border-style: ridge;
+  
+}
+.bright {
+  background: url(kids_hands_up.jpg) no-repeat center center fixed; 
+  color:#fff;
+  background-size: cover;
+}
+
+.green {
+  background-color: #33ee67;
+  border: ridge;
+  border-width: 5px;
+  border-color: black;
+}
+.login {
+  background-color: #33ee67;
+  background: url(kids_hands_up.jpg) no-repeat center center fixed; 
+  color:#fff;
+  background-size: cover;
 }

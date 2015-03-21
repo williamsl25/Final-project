@@ -10,13 +10,14 @@ class ProgramsController < ApplicationController
     @program = Program.new
     @students = Student.all
     @teachers = Teacher.all
+    authorize! :create, Program
   end
 
   def create
     @program = Program.create program_params
     @students = Student.all
     @teachers = Teacher.all
-    
+    @program.commentable = current_user
     if @program.save
       flash[:notice] = "#{@program.name} information successsfully saved."
       redirect_to programs_path
@@ -29,28 +30,38 @@ class ProgramsController < ApplicationController
   def create_comment
     @program = Program.find params[:id]
     @comment = @program.comments.create comment_params
-    redirect_to program_path(@program)
-  end
+    @comment.commentable = @program
+    @comment.user = current_user
+    if @comment.save
+      UserMailer.comment_email(current_user, @comment).deliver
+      UserMailer.program_user_comment_email(@program, @comment).deliver
+      redirect_to program_path(@program)
+    else
+      render :new
+    end
 
+  end
 
   def show
     @program = Program.find params[:id]
     @students = @program.students
     @teachers = @program.teachers
     @comment = Comment.new
+    authorize! :create, Comment
   end
 
   def edit
     @program = Program.find params[:id]
     @students = Student.all
     @teachers = Teacher.all
+    authorize! :update, Program
   end
 
   def update
     @students = Student.all 
     @teachers = Teacher.all
     @program = Program.find params[:id]
-    
+    @program.user = current_user
     if @program.update program_params
       flash[:notice] = "#{@program.name} information successfully updated."
       redirect_to program_path(@program)
