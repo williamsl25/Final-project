@@ -31,9 +31,18 @@ p.alert {
   background-color: transparent;  
 }
 
-
+.student {
+  color: white;
+  font-size: 55px;
+  margin-left: 25px;
+}
+.studentlink {
+  color: white;
+  font-size: 25px;
+  margin-left: 25px;
+}
 .studentbackground {
-  background: url(kids_hands_up.jpg) no-repeat center center fixed;
+  background: url(books.jpg) no-repeat center center fixed;
   background-size: cover;
 }
 
@@ -42,95 +51,19 @@ p.alert {
   font-weight: bold;
   
 }
-.teaching  {
-  border-style: double;
-  box-shadow: 10px 10px 5px #A4A4A4;
-}
 
 .cbm {
   background-color: white;
   opacity: .8;
 
 }
-.links {
-  margin-top: 100px;
-  margin-left: 25px;
-}
+
 .alert {
   margin-top: 75px;
   margin-left: 25px;
 }
-.program_header {
-  margin-top: 5px;
-  margin-left: 25px;
-  text-align: left;
-}
-.teacher {
-  margin-top: 5px;
-  margin-left: 5px;
-  font-family: 'Open Sans Condensed', sans-serif;
-  font-size: 75px;
-}
-.teachlist {
-  font-size: 20px;
-  font-family: 'Open Sans Condensed', sans-serif;
-  font-variant: small-caps;
-  color: black;
-}
-.teachers{
-  opacity: .8;
-  background-color: grey;
-  
-}
-.back {
-  background-color: white;
 
-}
-.program {
-  margin-top: -50px;
-  margin-left: 5px;
-  font-family: 'Open Sans Condensed', sans-serif;
-  font-size: 75px;
-}
-.programname {
-  margin-top: -30px;
-  margin-left: 5px;
-  font-family: 'Open Sans Condensed', sans-serif;
-  font-size: 45px;
-}
-.programlist {
-  font-size: 20px;
-  font-family: 'Open Sans Condensed', sans-serif;
-  font-variant: small-caps;
-  color: black;
-}
-.programs{
-  opacity: .8;
-  background-color: grey;
-  
-}
-.programback {
-  background-color: white;
 
-}
-.teachbox {
-  background-color: transparent;
-  margin-top: 100px;
-  font-family: 'Open Sans Condensed', sans-serif;
-  font-variant: small-caps;
-}
-.studentbox {
-  background-color: transparent;
-  margin-top: 100px;
-  font-family: 'Open Sans Condensed', sans-serif;
-  font-variant: small-caps;
-}
-.programbox {
-  background-color: transparent;
-  margin-top: 100px;
-  font-family: 'Open Sans Condensed', sans-serif;
-  font-variant: small-caps;
-}
 .blurb {
   padding: 120px 0;
   background-color:#33ee67;
