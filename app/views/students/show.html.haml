@@ -1,7 +1,7 @@
-.container.marketing  
-  .row.featurette
+.studentbackground   
+  .row
     .col-md-6.col-lg-6
-      %h2.featurette-heading
+      %h2.student
         Student Information
       = link_to "Back to Students", students_path
       %br
@@ -9,81 +9,82 @@
       |
       = link_to "Delete", student_path(@student), method: :delete
     
-.row
-  .col-md-6.col-md-offset-3
-    .list-group-item
-      .text-center
-        .lead 
-          = @student.first_name + ' ' + @student.last_name
-        %strong
-          Date of Birth:
-        = @student.date_of_birth
-        %br
-        %strong
-          Grade Level:
-        = @student.grade
-        %br
-        %strong
-          Strengths:
-        = @student.strengths
-        %br
-        %strong
-          Weaknesses:
-        = @student.weaknesses
-        %br
-        %br
-        %p.lead.teaching 
-          I am in the following reading group(s):
-          %br
-        - @programs.each do |program|
-          %h3.lead
-            = program.name 
-          Focus:
-          = program.focus
-          %br
-.row
-  .col-md-6.col-md-offset-3
-    .list-group-item
-      .text-center
-      %ul
-        - @student.comments.each do |comment|
-          %li
-            = comment.content
-            |
-            =link_to "Delete Comment", destroy_comment_student_path(comment), method: :delete
-      %br
-      = form_for @comment, url: create_comment_student_path(@student) do |f|
-        .form-group
-          .text-center
-            = f.label :content, "Add Comment:"
-          = f.text_area :content, class: "form-control"
-          %br
-          .text-center
-            = f.submit "Submit Comment", class: "btn btn-primary"
-.container.marketing
-  = link_to "Add a new CBM score", new_cbm_path  
   .row
-    .col-sm-6.col-lg-6
-      %table.table.table-striped
-        %div.chart
-          %tr
-            %th
-            %th Name
-            %th Date
-            %th Score
-            %th Description
-          
-          
-          - @cbms.each do |cbm|
+    .col-md-6.col-md-offset-3
+      .list-group-item
+        .text-center
+          .lead 
+            = @student.first_name + ' ' + @student.last_name
+          %strong
+            Date of Birth:
+          = @student.date_of_birth
+          %br
+          %strong
+            Grade Level:
+          = @student.grade
+          %br
+          %strong
+            Strengths:
+          = @student.strengths
+          %br
+          %strong
+            Weaknesses:
+          = @student.weaknesses
+          %br
+          %br
+          %p.lead.teaching 
+            I am in the following reading group(s):
+            %br
+          - @programs.each do |program|
+            %h3.lead
+              = program.name 
+            Focus:
+            = program.focus
+            %br
+  .row
+    .col-md-6.col-md-offset-3
+      .list-group-item
+        .text-center
+        %ul
+          - @student.comments.each do |comment|
+            %li
+              = comment.content
+              |
+              =link_to "Delete Comment", destroy_comment_student_path(comment), method: :delete
+        %br
+        = form_for @comment, url: create_comment_student_path(@student) do |f|
+          .form-group
+            .text-center
+              = f.label :content, "Add Comment:"
+            = f.text_area :content, class: "form-control"
+            %br
+            .text-center
+              = f.submit "Submit Comment", class: "btn btn-primary"
+  .container.marketing
+    = link_to "Add a new CBM score", new_cbm_path  
+    .row
+      .col-sm-6.col-lg-6
+        %table.table.table-solid
+        
+          %div.chart
             %tr
-              %td= cbm.student.id
-              %td= cbm.student.first_name + ' ' + cbm.student.last_name
-              %td= cbm.date_taken.strftime("%m/%d/%Y")
-              %td= cbm.score
-              %td= cbm.description
+              %th
+              %th Name
+              %th Date
+              %th Score
+              %th Description
+            
+            
+            - @cbms.each do |cbm|
+              %tr
+                %td= cbm.student.id
+                %td= cbm.student.first_name + ' ' + cbm.student.last_name
+                %td= cbm.date_taken.strftime("%m/%d/%Y")
+                %td= cbm.score
+                %td= cbm.description
 
-      %table.table.table-striped
-    
-    .col-sm-6.col-lg-6.cbm
-      = content_tag :div, "", id: "cbm_chart", data: {cbms: cbm_chart_data}
+        %table.table.table-striped
+      
+      .col-sm-6.col-lg-6.cbm
+        = content_tag :div, "", id: "cbm_chart", data: {cbms: cbm_chart_data}
 

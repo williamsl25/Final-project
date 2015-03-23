@@ -2,25 +2,25 @@
   .student
     Students
     %br
-   
-  - if can? :create, Student
-    = link_to "Add a Student", new_student_path
-    .row
-      - @students.each do |student|
-        .col-md-4
-          .list-group-item
-            .text-center
-              = link_to student.first_name, student_path(student)
-              = link_to student.last_name, student_path(student) 
+    .studentlink 
+      - if can? :create, Student
+        = link_to "Add a Student", new_student_path
+  .row.studentlist
+    - @students.each do |student|
+      .col-md-4.col-lg-12
+        .list-group-item
+          .text-center.studentlist
+            = link_to student.first_name, student_path(student)
+            = link_to student.last_name, student_path(student) 
+            %br
+            =student.date_of_birth.strftime("%m/%d/%Y")
+            %br
+            - if can? :update, Student
+              = link_to "Edit student", edit_student_path(student)
+              |
+              = link_to "Delete student", student_path(student), method: :delete
               %br
-              =student.date_of_birth.strftime("%m/%d/%Y")
               %br
-              - if can? :update, Student
-                = link_to "Edit student", edit_student_path(student)
-                |
-                = link_to "Delete student", student_path(student), method: :delete
-                %br
-                %br
 
   .div
     .col-md-4

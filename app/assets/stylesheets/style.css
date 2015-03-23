@@ -30,28 +30,56 @@ p.alert {
   margin-bottom: 0px;
   background-color: transparent;  
 }
-
+.table-solid {
+  background-color: white;
+  opacity: .9;
+}
 .student {
   color: white;
   font-size: 55px;
   margin-left: 25px;
+
+}
+.studentlist {
+  opacity: .9;
+  color: white;
+}
+.teacher {
+  color: white;
+  font-size: 55px;
+  margin-left: 25px;
+}
+.teacherlink {
+  color: white;
+  font-size: 15px;
+  margin-left: 25px;
 }
 .studentlink {
   color: white;
-  font-size: 25px;
+  font-size: 15px;
   margin-left: 25px;
+
 }
 .studentbackground {
   background: url(books.jpg) no-repeat center center fixed;
   background-size: cover;
 }
-
+.teacherbackground {
+  background: url(office.jpg) no-repeat center center fixed;
+  background-size: cover;
+}
 .container.marketing {
   color: black;
   font-weight: bold;
   
 }
-
+.addteach {
+  color: white;
+}
+.teachers {
+  background-color: white;
+  opacity: .8;
+}
 .cbm {
   background-color: white;
   opacity: .8;
