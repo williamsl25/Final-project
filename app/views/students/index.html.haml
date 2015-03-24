@@ -1,32 +1,47 @@
 .studentbackground 
-  .student
-    Students
-    %br
-    .studentlink 
-      - if can? :create, Student
-        = link_to "Add a Student", new_student_path
-  .row.studentlist
-    - @students.each do |student|
-      .col-md-4.col-lg-12
-        .list-group-item
-          .text-center.studentlist
-            = link_to student.first_name, student_path(student)
-            = link_to student.last_name, student_path(student) 
-            %br
-            =student.date_of_birth.strftime("%m/%d/%Y")
-            %br
-            - if can? :update, Student
-              = link_to "Edit student", edit_student_path(student)
-              |
-              = link_to "Delete student", student_path(student), method: :delete
-              %br
-              %br
+  .row
+    .col-md-6.col-lg-6.teacher
+      %h2.teacher
+        Students
+        %br
+  .row.addteach
+    .col-sm-6.col-md-12.col-lg-12
+      .teacherlink
+        .text-center
+          - @students.each do |student|
+            .div
+              .col-md-3.col-lg-12.teachlist
+                .list-group-item
+                  .text-center  
+  
+                    = link_to student.first_name + ' ' +student.last_name, student_path(student)
+                    
+                    %br
+                    =student.date_of_birth.strftime("%m/%d/%Y")
+                    %br
+                    - if can? :update, Student
+                      = link_to edit_student_path(student) do
+                        %span.glyphicon.glyphicon-pencil
+                      = link_to student_path(student), method: :delete do
+                        %span.glyphicon.glyphicon-remove
+                      %br
+                      %br
 
-  .div
-    .col-md-4
-    = link_to "Welcome", root_path
-    |
-    = link_to "CBM", cbms_path
+          - if can? :create, Student
+            .div 
+              .col-md-3.col-lg-12.teachlist 
+                .list-group-item 
+                  .text-center.addTeacher        
+                    Add Student
+                  %br
+
+                  = link_to new_student_path do
+                    %span.glyphicon.glyphicon-plus.addTeacher
+                  %br
+                  %br
+  .row.addteach
+    .col-sm-6.col-md-12.col-lg-12    
+      = link_to "CBM", cbms_path
     
 
 / .col-md-4

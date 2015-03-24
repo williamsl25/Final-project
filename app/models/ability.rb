@@ -10,7 +10,8 @@ class Ability
     
         can :manage, :all
     else
-        can :read, Student, id: []
+        # [1,2,3,4,5,6]
+        can :read, Student, id: user.students.map(&:id)
         can [:read, :create, :update, :destroy], Comment
         can :read, Program
         

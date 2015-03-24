@@ -1,7 +1,8 @@
 class StudentsController < ApplicationController
+before_action :authenticate_user!
 
   def index
-    @students = Student.all
+    @students = Student.accessible_by(current_ability)
     @programs = Program.all
     @teachers = Teacher.all
     authorize! :read, Student
@@ -9,8 +10,11 @@ class StudentsController < ApplicationController
 
   def show
     @student = Student.find params[:id]
+    @user = current_user
     @programs = @student.programs
     @teachers = Teacher.all
+    @students = Student.accessible_by(current_ability)
+    
     @comment = Comment.new
     @cbm = Cbm.new
     @cbms = @student.cbms
@@ -63,7 +67,6 @@ class StudentsController < ApplicationController
 
   def update
     @student = Student.find params[:id]
-    @teacher.user = current_user 
       if @student.update_attributes student_params
       flash[:notice] = "Student was successfully updated!"
       redirect_to student_path(@student)
@@ -75,7 +78,6 @@ class StudentsController < ApplicationController
 
   def destroy
     @student = Student.find params[:id]
-    @teacher.user = current_user
     @student.delete
     flash[:notice] = "Student successfully deleted"
     redirect_to students_path
@@ -84,7 +86,6 @@ class StudentsController < ApplicationController
   def destroy_comment
     @comment = Comment.find params[:id]
     @comment.destroy
-    # authorize! :destroy_comment, @comment
     redirect_to @comment.commentable
   end
 
@@ -103,7 +104,8 @@ class StudentsController < ApplicationController
       :strengths,
       :weaknesses,
       teacher_ids: [],
-      program_ids: []
+      program_ids: [],
+      user_ids: [],
     )
   end
 

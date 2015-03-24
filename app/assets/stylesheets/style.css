@@ -40,6 +40,10 @@ p.alert {
   margin-left: 25px;
 
 }
+.teacherlink .teachlist a {
+  opacity: .9;
+  color: black;
+}
 .studentlist {
   opacity: .9;
   color: white;
@@ -49,7 +53,7 @@ p.alert {
   font-size: 55px;
   margin-left: 25px;
 }
-.teacherlink {
+.teacherlink a {
   color: white;
   font-size: 15px;
   margin-left: 25px;
@@ -61,7 +65,7 @@ p.alert {
 
 }
 .studentbackground {
-  background: url(books.jpg) no-repeat center center fixed;
+  background: url(kids_hands_up.jpg) no-repeat center center fixed;
   background-size: cover;
 }
 .teacherbackground {
@@ -76,6 +80,9 @@ p.alert {
 .addteach {
   color: white;
 }
+.teachlist .add {
+  margin-bottom: 25px;
+}
 .teachers {
   background-color: white;
   opacity: .8;
@@ -83,6 +90,7 @@ p.alert {
 .cbm {
   background-color: white;
   opacity: .8;
+  margin-bottom: 25px;
 
 }
 
@@ -122,4 +130,26 @@ p.alert {
   background: url(kids_hands_up.jpg) no-repeat center center fixed; 
   color:#fff;
   background-size: cover;
+}
+.addTeacher {
+  margin-bottom: 3px;
+  color: black;
+}
+.cancel a{
+  color: white;
+  
+}
+.cancelback {
+  background-color: transparent;
+}
+.addcbm a{
+  color: white;
+  background-color: transparent;
+  margin-left: 15px;
+}
+.chart {
+  margin-left: 15px;
+}
+.teachlist {
+  margin-left: 55px;
 }

@@ -1,55 +1,50 @@
-=form_for(@student) do |f|
-  - if @student.errors.any?
-    - @student.errors.full_messages.each do |message|
-      = message
-= form_for @student do |f|
-  .form-group
-    .list-group-item
-      %br
+.studentbackground
+  =form_for(@student) do |f|
+    - if @student.errors.any?
+      - @student.errors.full_messages.each do |message|
+        = message
+  = form_for @student do |f|
+    .form-group
+      .list-group-item
+        = f.label :user_id
+        = collection_select(:student, :user_id, User.all, :id, :last_name, :prompt => 'Please select user')
+        %br
         = f.label :gender
         = f.radio_button(:gender, "male")
         = f.label(:gender, "male")
         = f.radio_button(:gender, "female")
         = f.label(:gender, "female")
-      %br
-      = f.label :first_name
-      = ':'
-      = f.text_field :first_name, class: "form-control"
-      %br
-      = f.label :last_name
-      = ':'
-      = f.text_field :last_name, class: "form-control"
-      %br
-      .form-group
-        = f.label :date_of_birth
-        = f.date_field :date_of_birth, :start_year => Date.today.year - 100, :end_year => Date.today.year, class: "form-control"
-      %br
-      .form-group
-        = f.label :grade
-        = ':'
-        = f.text_area :grade, class: "form-control"
-      %br
-      .form-group
-        = f.label :strengths
-        = ':'
-        = f.text_area :strengths, class: "form-control"
         %br
-      .form-group
-        = f.label :weaknesses
+        = f.label :first_name
         = ':'
-        = f.text_area :weaknesses, class: "form-control"
-    .list-group-item
-      %strong
-        Reading Program:
+        = f.text_field :first_name, class: "form-control"
         %br
-      .checkbox
-        - @programs.each do |program|
-          %label
-            = check_box_tag 'student[program_ids][]', program.id, @student.programs.include?(program)
-            = program.focus
+        = f.label :last_name
+        = ':'
+        = f.text_field :last_name, class: "form-control"
+        %br
+        .form-group
+          = f.label :date_of_birth
+          = f.date_field :date_of_birth, :start_year => Date.today.year - 100, :end_year => Date.today.year, class: "form-control"
+        %br
+        .form-group
+          = f.label :grade
+          = ':'
+          = f.text_area :grade, class: "form-control"
+        %br
+        .form-group
+          = f.label :strengths
+          = ':'
+          = f.text_area :strengths, class: "form-control"
           %br
-  %br
-  .col-md-1.col-md-offset-4
-  =f.submit "Submit", class: "btn btn-primary"
+        .form-group
+          = f.label :weaknesses
+          = ':'
+          = f.text_area :weaknesses, class: "form-control"
+      
+        
+    %br
+    .col-md-1.col-md-offset-4
+    =f.submit "Submit", class: "btn btn-primary"
 
 

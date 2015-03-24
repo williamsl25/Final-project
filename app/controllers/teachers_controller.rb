@@ -1,35 +1,35 @@
 class TeachersController < ApplicationController
-  # before_action :authenticate_user!
+  before_action :authenticate_user!
   def index
-    # @user = current_user
-    # if @user.admin_status
-      # @teacher = Teacher.all
-    # else 
-    #   flash[:notice] = "You are not authorized to add an assignment"
-    #   redirect_to assignments_path
-    # end
+    @user = current_user
+    if @user.admin_status
+      @teacher = Teacher.all
+    else 
+      flash[:notice] = "You are not authorized to add an assignment"
+      redirect_to assignments_path
+    end
     # @teachers = if !params[:q].blank?
-    #   Teacher.where("name LIKE ? OR grade LIKE ? OR email LIKE ? OR program_id LIKE ?", "%#{params[:q]}%", "%#{params[:q]}%", "%#{params[:q]}%", "%#{params[:q]}%")
+    #   # Teacher.where("name LIKE ? OR grade LIKE ? OR email LIKE ? OR program_id LIKE ?", "%#{params[:q]}%", "%#{params[:q]}%", "%#{params[:q]}%", "%#{params[:q]}%")
     # else
       @teachers = Teacher.all
     # end
   end
 
   def new
-    # @user = current_user
-    # if @user.admin_status
+    @user = current_user
+    if @user.admin_status
       @teacher = Teacher.new
-    # else 
-    #   flash[:notice] = "You are not authorized to add an assignment"
-      # redirect_to assignments_path
-    # end
+    else 
+      flash[:notice] = "You are not authorized to add an assignment"
+      redirect_to assignments_path
+    end
     @programs = Program.all  
   end
 
 
   def show
     @teacher = Teacher.find params[:id]
-    # @teacher.user = current_user
+    @user = current_user
     @students = @teacher.students
     @programs = if !params[:q].blank?
       @teacher.programs.where("name LIKE ? OR focus LIKE ? OR student_id LIKE ?", "%#{params[:q]}%", "%#{params[:q]}%", "%#{params[:q]}%")
@@ -39,10 +39,10 @@ class TeachersController < ApplicationController
   end
 
   def create
-    # @user = current_user
-    # if @user.admin_status
+    @user = current_user
+    if @user.admin_status
     @teacher = Teacher.create teacher_params
-    # @teacher.user = @user
+    @teacher.user = @user
       if @teacher.save
         flash[:notice] = 'Teacher was successfully created'
         redirect_to @teacher
@@ -50,11 +50,11 @@ class TeachersController < ApplicationController
         flash[:error] = "Teacher was NOT saved"
         render :new
       end
-    # else 
-    # flash[:notice] = "You are not authorized to create an teacher"
-    # redirect_to teachers_path
+    else 
+    flash[:notice] = "You are not authorized to create an teacher"
+    redirect_to teachers_path
   end
-  # end
+  end
 
   def edit
     @teacher = Teacher.find params[:id]
@@ -63,11 +63,10 @@ class TeachersController < ApplicationController
   end
 
   def update
-    # @user = current_user
-    # if @user.admin_status
-      @submissions = Submission.all 
+    @user = current_user
+    if @user.admin_status
+      @students = Student.all 
       @teacher = Teacher.find params[:id]
-      # @teacher.user = current_user
       if @teacher.update_attributes teacher_params
         flash[:notice] = "Teacher was successfully Updated."
         redirect_to teachers_path
@@ -75,23 +74,23 @@ class TeachersController < ApplicationController
         flash[:error] = "Teacher was NOT updated."
         render :new
       end
-    # else 
-    #   flash[:notice] = "You are not authorized to update a teacher"
-    #   redirect_to teachers_path
-    # end
+    else 
+      flash[:notice] = "You are not authorized to update a teacher"
+      redirect_to teachers_path
+    end
   end
 
   def destroy
-    # @user = current_user
-    # if @user.admin_status
+    @user = current_user
+    if @user.admin_status
       @teacher = Teacher.find params[:id]
       @teacher.delete
-      flash[:notice] = "#{@teacher.name}"
+      flash[:notice] = "#{@teacher.name} was deleted"
       redirect_to teachers_path
-    # else 
-    #   flash[:notice] = "You are not authorized to update a teacher"
-    #   redirect_to teachers_path
-    # end
+    else 
+      flash[:notice] = "You are not authorized to update a teacher"
+      redirect_to teachers_path
+    end
   end
 
   private
