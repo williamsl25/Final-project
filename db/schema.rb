@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150319200117) do
+ActiveRecord::Schema.define(version: 20150324190741) do
 
   create_table "cbms", force: :cascade do |t|
     t.integer  "score",        limit: 4
@@ -31,6 +31,14 @@ ActiveRecord::Schema.define(version: 20150319200117) do
     t.datetime "created_at",                     null: false
     t.datetime "updated_at",                     null: false
     t.integer  "user_id",          limit: 4
+  end
+
+  create_table "links", force: :cascade do |t|
+    t.string   "name",       limit: 255
+    t.string   "string",     limit: 255
+    t.string   "url",        limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
   end
 
   create_table "program_students", force: :cascade do |t|

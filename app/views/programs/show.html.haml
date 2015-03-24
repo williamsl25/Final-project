@@ -1,66 +1,69 @@
-.container 
+.programbackground
   .row
-    .col-md-12.col-lg-6     
-      %br
-      %h2.programname
+    .col-md-6.col-lg-6.teacher
+      %h2.teacher
         = @program.name
-        %span.text-muted 
+        %br 
           = @program.focus
-
-      = link_to "Back to Programs", programs_path
-      %br
-      - if can? :update, Program 
-        = link_to "Edit", edit_program_path(@program)
-        |
-        = link_to "Delete", program_path(@program), method: :delete
-        %br
-.row
-  .col-md-6.col-md-offset-3
-    .list-group-item
-      .text-center
-        %strong
-          Description:
-        = @program.description
-        %br
-    %br
-    .list-group-item
-      .text-center
-        %strong
-          Teacher(s):
-          %br
-        - @teachers.each do |teacher|
-          = teacher.name 
-          %br
-    %br
-    .list-group-item
-      .text-center
-        %strong
-          Students in the reading program:
-          %br
-        - @students.each do |student|
-          = student.first_name + ' ' + student.last_name
-          %br
-    %br
-    .list-group-item
-      %strong
+  .row 
+    .col-md-2.col.teachlist 
+      .list-group-item 
+        .text-center 
+          - if can? :update, Program
+            = link_to edit_program_path(@program) do
+              %span.glyphicon.glyphicon-pencil
+            = link_to program_path(@program), method: :delete do
+              %span.glyphicon.glyphicon-remove
+            %br
+            = link_to "Back to Programs", programs_path
+  .row
+    .col-md-6.col-md-offset-3
+      .list-group-item
         .text-center
-          Program Comments:
-      %ul
-        - @program.comments.each do |comment|
-          %li
-          - if can? :update, Comment 
-            = comment.content
-            |
-            =link_to "Delete Comment", destroy_comment_program_path(comment), method: :delete
-      %br
-      = form_for @comment, url: create_comment_program_path(@program) do |f|
-        .form-group
-          .text-center
-
-            = f.label :content, "Add Comment:"
-          = f.text_area :content, class: "form-control"
-          %br
-          .text-center
-            = f.submit "Submit Comment", class: "btn btn-primary"
-
+          .lead
+            %strong 
+              Description:
+            = @program.description
+            %br
+            %br
+            .list-group-item
+              .text-center
+                %strong
+                  Teacher(s):
+                  %br
+                - @teachers.each do |teacher|
+                  = teacher.name 
+                  %br
+                  %br
+            .list-group-item
+              .text-center
+                %strong
+                  Students in the reading program:
+                - @students.each do |student|
+                  %h3.lead
+                    = student.first_name + ' ' + student.last_name
+                    %br
       
+            .list-group-item
+              
+              .text-center
+                %strong
+                  Program Comments:
+              %ul
+                - @program.comments.each do |comment|
+                  %li
+                  - if can? :update, Comment 
+                    = comment.content
+                    |
+                    =link_to "Delete Comment", destroy_comment_program_path(comment), method: :delete
+                    %br
+              %p
+                = form_for @comment, url: create_comment_program_path(@program) do |f|
+          
+                  = f.label :content, "Add Comment:"
+                  = f.text_area :content, class: "form-control"
+                  %br
+              
+                  = f.submit "Submit Comment", class: "btn btn-primary"
+
+                      

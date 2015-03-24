@@ -7,11 +7,13 @@
     .col-md-2.col.teachlist 
       .list-group-item 
         .text-center 
-        - if can? :update, Student
-          = link_to edit_student_path(@student) do
-            %span.glyphicon.glyphicon-pencil
-          = link_to student_path(@student), method: :delete do
-            %span.glyphicon.glyphicon-remove
+          - if can? :update, Student
+            = link_to edit_student_path(@student) do
+              %span.glyphicon.glyphicon-pencil
+            = link_to student_path(@student), method: :delete do
+              %span.glyphicon.glyphicon-remove
+            %br
+            = link_to "Back to Students", students_path
     
   .row
     .col-md-6.col-md-offset-3
@@ -21,7 +23,7 @@
             = @student.first_name + ' ' + @student.last_name
           %strong
             Date of Birth:
-          = @student.date_of_birth
+          = @student.date_of_birth.strftime("%m/%d/%Y")
           %br
           %strong
             Grade Level:
@@ -70,7 +72,7 @@
         = link_to "Add a new CBM score", new_cbm_path  
   .row
     .col-sm-6.col-lg-6
-      %table.table.table-solid
+      %table.table.table-striped
       
         %div.chart
           %tr

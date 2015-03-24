@@ -1,32 +1,44 @@
-.container 
+.programbackground
   .row
-    .col-md-12.col-lg-6.program     
-      %br
-      %h2.program
+    .col-md-6.col-lg-6.teacher
+      %h2.teacher
         Program Information
         %br
-.container
-  .row
-    .col-md-6.col-lg-6
-    - if can? :create, Program
-      = link_to "Add a Program", new_program_path
   
-- @programs.each do |program|
-  .div
-    .col-md-4.col-lg-12
-      .list-group-item.programs
-        .text-center.programback
-          .programlist
-            = link_to program.name, program_path(program)
-          
-          %br
-        - if can? :update, Program  
-          = link_to "Edit program", edit_program_path(program)
-          |
-          = link_to "Delete program", program_path(program), method: :delete
-          %br
+  .row.addteach
+    .col-sm-6.col-md-12
+      .teacherlink
+        .text-center
+          - @programs.each do |program|
+            .div
+              .col-md-3.col-md-offset-6.teachlist
+                .list-group-item
+                  .text-center
+                    
+                    = link_to program.name, program_path(program)
+                    
+                    %br
+                    %br
+                  - if can? :update, Program 
+                    = link_to edit_program_path(program) do
+                      %span.glyphicon.glyphicon-pencil
+                    
+                    = link_to program_path(program), method: :delete do
+                      %span.glyphicon.glyphicon-remove
+                  %br
+          - if can? :create, Program
+            .div 
+              .col-md-3.col-md-offset-6.teachlist 
+                .list-group-item 
+                  .text-center.addTeacher        
+                    Add Program
+                  %br
+                  = link_to new_program_path do
+                    %span.glyphicon.glyphicon-plus.addTeacher
+  .row.addteach
+    .col-sm-6.col-md-12.col-lg-12   
+      %br
+      %br
 
-    / %br
-    / = link_to "Edit", edit_program_path(@program)
-    / |
-    / = link_to "Delete", program_path(@program), method: :delete
+    
+

@@ -1,0 +1,37 @@
+.studentbackground 
+  .row
+    .col-md-6.col-lg-6.teacher
+      %h2.student
+        Resources Index
+  .row
+    .col-md-6.col-lg-6.col-md-offset-3.link
+      .link
+        %br
+      = link_to "Add a new link", new_link_path
+      %br
+  .row
+    .col-sm-6.col-lg-6.col-md-offset-3
+      %table.table.table-striped
+      
+        %div.chart
+          %tr
+            %th Name
+            %th Link
+            %th
+            %th
+            
+     
+          - @links.each do |link|
+            %tr
+              %td= link.name
+              %td
+                %a{:href => link.url}= link.url
+              %td
+                = link_to edit_link_path(link) do
+                  %span.glyphicon.glyphicon-pencil
+              %td
+                = link_to link_path(link), method: :delete do
+                  %span.glyphicon.glyphicon-remove
+                
+                
+              

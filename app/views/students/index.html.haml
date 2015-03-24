@@ -1,19 +1,17 @@
 .studentbackground 
   .row
     .col-md-6.col-lg-6.teacher
-      %h2.teacher
+      %h2.student
         Students
-        %br
   .row.addteach
-    .col-sm-6.col-md-12.col-lg-12
+    .col-sm-6.col-md-12
       .teacherlink
         .text-center
           - @students.each do |student|
             .div
-              .col-md-3.col-lg-12.teachlist
+              .col-md-3.col-md-offset-6.teachlist
                 .list-group-item
-                  .text-center  
-  
+                  .text-center 
                     = link_to student.first_name + ' ' +student.last_name, student_path(student)
                     
                     %br
@@ -26,10 +24,11 @@
                         %span.glyphicon.glyphicon-remove
                       %br
                       %br
+  
 
           - if can? :create, Student
             .div 
-              .col-md-3.col-lg-12.teachlist 
+              .col-md-3.col-md-offset-6.teachlist 
                 .list-group-item 
                   .text-center.addTeacher        
                     Add Student
@@ -39,19 +38,6 @@
                     %span.glyphicon.glyphicon-plus.addTeacher
                   %br
                   %br
-  .row.addteach
-    .col-sm-6.col-md-12.col-lg-12    
-      = link_to "CBM", cbms_path
-    
 
-/ .col-md-4
-/   %br
-/   %center 
-/     %h1 Groups Offered:
-/     - @groups.each do |group|
-/       %center
-/         %strong
-/         = link_to group.name, group_path(group)
-
-
+ 
 

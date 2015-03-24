@@ -32,13 +32,14 @@ p.alert {
 }
 .table-solid {
   background-color: white;
-  opacity: .9;
+  margin-left: 25px;
+  width: 75%; 
 }
 .student {
   color: white;
   font-size: 55px;
-  margin-left: 25px;
-
+  margin-left: 45px;
+  font-family: 'Open Sans Condensed', sans-serif;
 }
 .teacherlink .teachlist a {
   opacity: .9;
@@ -51,19 +52,15 @@ p.alert {
 .teacher {
   color: white;
   font-size: 55px;
-  margin-left: 25px;
+  margin-left: 35px;
+  font-family: 'Open Sans Condensed', sans-serif;
 }
 .teacherlink a {
   color: white;
   font-size: 15px;
   margin-left: 25px;
 }
-.studentlink {
-  color: white;
-  font-size: 15px;
-  margin-left: 25px;
 
-}
 .studentbackground {
   background: url(kids_hands_up.jpg) no-repeat center center fixed;
   background-size: cover;
@@ -72,25 +69,26 @@ p.alert {
   background: url(office.jpg) no-repeat center center fixed;
   background-size: cover;
 }
-.container.marketing {
-  color: black;
-  font-weight: bold;
-  
+.programbackground {
+  background: url(books.jpg) no-repeat center center fixed;
+  background-size: cover;
 }
+
 .addteach {
   color: white;
+  
+  margin-right: 45px;
 }
 .teachlist .add {
   margin-bottom: 25px;
 }
-.teachers {
-  background-color: white;
-  opacity: .8;
-}
+
 .cbm {
   background-color: white;
-  opacity: .8;
+  padding-right: 15px;
   margin-bottom: 25px;
+  width: 45%;
+  margin-right: 25px;
 
 }
 
@@ -149,7 +147,23 @@ p.alert {
 }
 .chart {
   margin-left: 15px;
+
 }
 .teachlist {
-  margin-left: 55px;
+  margin-left: 65px;
+}
+.cbmlink {
+  color: white;
+}
+.table-striped {
+  background-color:  #33ee67; 
+}
+.link a{
+  color: white;
+  background-color: transparent;
+  margin-left: 15px;
+}
+.img-circle {
+  width: 150px;
+  height: 150px;
 }

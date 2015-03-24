@@ -3,17 +3,13 @@ class TeachersController < ApplicationController
   def index
     @user = current_user
     if @user.admin_status
-      @teacher = Teacher.all
+      @teachers = Teacher.all
     else 
       flash[:notice] = "You are not authorized to add an assignment"
       redirect_to assignments_path
     end
-    # @teachers = if !params[:q].blank?
-    #   # Teacher.where("name LIKE ? OR grade LIKE ? OR email LIKE ? OR program_id LIKE ?", "%#{params[:q]}%", "%#{params[:q]}%", "%#{params[:q]}%", "%#{params[:q]}%")
-    # else
-      @teachers = Teacher.all
-    # end
   end
+    
 
   def new
     @user = current_user

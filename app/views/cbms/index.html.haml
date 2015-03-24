@@ -1,15 +1,13 @@
-.container.marketing  
-  .row.featurette
-    .col-md-6.col-lg-12
-      %h2.featurette-heading
+.studentbackground 
+  .row
+    .col-md-6.col-lg-6.teacher
+      %h2.student
         CBM
       %div.chart
         %br
       = link_to "Add a new CBM score", new_cbm_path
-
-      /= content_tag :div, "", id: "cbm_chart", data: {cbms: cbm_chart_data}
       %br
-  .col-md-6.col-lg-12
+  .col-md-6.col-md-offset-3
     %table.table.table-striped
 
       %tr
@@ -18,8 +16,7 @@
         %th Date
         %th Score
         %th Description
-      
-      
+
       - @cbms.each do |cbm|
         %tr
           %td= cbm.student.id
@@ -28,6 +25,6 @@
           %td= cbm.score
           %td= cbm.description
 
-%table.table.table-striped
+  %table.table.table-striped
   \...
     

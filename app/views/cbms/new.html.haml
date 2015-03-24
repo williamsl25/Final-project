@@ -1,14 +1,15 @@
-
-.container.marketing 
-  .text-center 
-    .row.featurette
-      .col-md-6.col.col-lg-6
-      %h4.featurette-heading
-        %br
-        Add a New CBM Score
-      = link_to "Cancel", new_cbm_path
-.row
-  .col-md-6.col-md-offset-3
-    = render 'form'
+.studentbackground
+  .col-md-6.col-md-offset-3 
+    .text-center
+      %h2.teacher
+        Add a new CBM score
+  .div 
+    .col-md-6.col-md-offset-3
+      .cancelback 
+        .text-center.cancel
+          = link_to "Cancel", new_cbm_path
     %br
+    .row
+      .col-md-6.col-md-offset-3
+        =render 'form'
     %br

@@ -1,0 +1,27 @@
+
+.studentbackground
+  .col-md-6.col-md-offset-3
+    .list-group-item
+      = form_for @link do |f|
+        .form-group
+          %br
+
+          = f.radio_button(:name, "Phonemic Awareness")
+          = f.label(:name, "Phonemic Awareness")
+          = f.radio_button(:name, "Alphabetic Principle")
+          = f.label(:name, "Alphabetic Principle")
+          = f.radio_button(:name, "Fluency")
+          = f.label(:name, "Fluency")
+          %br
+          = f.radio_button(:name, "Vocabulary")
+          = f.label(:name, "Vocabulary")
+          = f.radio_button(:name, "Comprehension")
+          = f.label(:name, "Comprehension")
+          
+        .form-group
+          = f.label :url
+          = f.text_area :url, class: "form-control"
+        .form-group
+          = f.submit "Submit", class: "btn btn-primary"
+          %br
+          = link_to "Cancel", links_path

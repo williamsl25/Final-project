@@ -1,4 +1,6 @@
 class CbmsController < ApplicationController
+  
+
   def index
     @cbms = Cbm.all
     @students = Student.all
@@ -9,7 +11,6 @@ class CbmsController < ApplicationController
 
   def new
     @cbm = Cbm.new
-    @students = Student.all
   end
 
   def show

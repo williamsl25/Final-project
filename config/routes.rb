@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   root 'welcome#index'
  # get 'welcome/about'
   resources :teachers
-
+  resources :links
   resources :programs do
     member do
       post :create_comment

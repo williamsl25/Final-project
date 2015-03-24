@@ -42,15 +42,17 @@
                     %span.caret
                   %ul.dropdown-menu{:role => "menu"}
                     %li
-                      %a{:href => "#"} Phonemic Awareness
+                      = link_to "Resources", links_path
                     %li
-                      %a{:href => "#"} Phonics
+                      %a{:href => "http://www.fcrr.org/Curriculum/PDF/G2-3/2-3PA_3.pdf"} Phonemic Awareness
                     %li
-                      %a{:href => "#"} Oral Reading Fluency
+                      %a{:href => "http://www.fcrr.org/Curriculum/pdf/GK-1/P_Final_Part1.pdf"} Phonics
                     %li
-                      %a{:href => "#"} Reading Comprehension
+                      %a{:href => "http://www.fcrr.org/Curriculum/PDF/G2-3/2-3Fluency_3.pdf"} Oral Reading Fluency
                     %li
-                      %a{:href => "#"} Vocabulary
+                      %a{:href => "http://www.fcrr.org/Curriculum/PDF/GK-1/C_Final.pdf"} Reading Comprehension
+                    %li
+                      %a{:href => "http://www.fcrr.org/Curriculum/pdf/GK-1/V_Final.pdf"} Vocabulary
                     
               %ul.nav.navbar-nav.navbar-right
                 -if current_user
@@ -81,7 +83,10 @@
         = link_to "Students", students_path
         |
       - if can? :read, Program
-        = link_to "Programs", programs_path 
+        = link_to "Programs", programs_path
+        |
+      - if can? :read, Teacher
+        = link_to "CBM", cbms_path 
 
     
     / 
