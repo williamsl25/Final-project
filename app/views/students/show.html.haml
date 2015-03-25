@@ -68,8 +68,9 @@
               = f.submit "Submit Comment", class: "btn btn-primary"
   .row 
     .col-sm-6.col-lg-6 
-      .addcbm  
-        = link_to "Add a new CBM score", new_cbm_path  
+      .addcbm
+        - if can? :create, Cbm  
+          = link_to "Add a new CBM score", new_cbm_path  
   .row
     .col-sm-6.col-lg-6
       %table.table.table-striped
