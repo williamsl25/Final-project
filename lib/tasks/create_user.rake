@@ -8,4 +8,12 @@ task create_user: :environment do
     admin_status: 0,
   })
   end
+  User.create!({
+    first_name: 'Lindsay',
+    last_name: 'Williams',
+    email: 'williamsl25@yahoo.com',
+    password: "password",
+    admin_status: 0,
+  })
+  end
 end
