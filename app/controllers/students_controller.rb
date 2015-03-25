@@ -17,7 +17,7 @@ before_action :authenticate_user!
     
     @comment = Comment.new
     @cbm = Cbm.new
-    @cbms = @student.cbms
+    @cbms = @student.cbms.sort_by{ |cbm| cbm.date_taken}
     authorize! :read, @student
   end
 

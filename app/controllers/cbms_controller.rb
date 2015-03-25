@@ -2,13 +2,14 @@ class CbmsController < ApplicationController
   
 
   def index
-    @cbms = Cbm.all
+    @cbms = Cbm.all.sort_by{ |cbm| cbm.date_taken }
     @students = Student.all
+
     # respond_to do |format|
     #   format.json { render json: @cbms.to_json }
     # end
   end
-
+  
   def new
     @cbm = Cbm.new
   end
@@ -57,7 +58,7 @@ class CbmsController < ApplicationController
   def set_cbm
     @cbm = Cbm.find params[:id]
   end
-
+  
   def cbm_params
     params.require(:cbm).permit(
       :date_taken,
