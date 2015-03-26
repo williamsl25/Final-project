@@ -33,10 +33,12 @@ class ProgramsController < ApplicationController
     @comment.commentable = @program
     @comment.user = current_user
     if @comment.save
-      UserMailer.comment_email(current_user, @comment).deliver
-      UserMailer.program_user_comment_email(@program, @comment).deliver
+      # UserMailer.comment_email(current_user, @comment).deliver
+      # UserMailer.program_user_comment_email(@program, @comment).deliver
+      flash[:notice] = "comment successsfully saved."
       redirect_to program_path(@program)
     else
+      flash[:error] = 'comment NOT successfully saved.'
       render :new
     end
 

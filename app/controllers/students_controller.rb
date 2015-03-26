@@ -50,11 +50,12 @@ before_action :authenticate_user!
     @comment.commentable = @student
     @comment.user = current_user
     if @comment.save
-    @comment.save
-      UserMailer.comment_email(current_user, @comment).deliver
-      UserMailer.student_user_comment_email(@student, @comment).deliver
+      flash[:notice] = 'Your comment was successfully created.'
+      # UserMailer.comment_email(current_user, @comment).deliver
+      # UserMailer.student_user_comment_email(@student, @comment).deliver
     redirect_to student_path(@student)
     else
+      flash[:notice] = 'Your comment was NOT successfully created.'
       render :new
     end
   end
