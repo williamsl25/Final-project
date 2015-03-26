@@ -82,6 +82,7 @@
             %th Date
             %th Score
             %th Description
+           
      
           - @cbms.each do |cbm|
             %tr
@@ -90,7 +91,7 @@
               %td= cbm.date_taken.strftime("%m/%d/%Y")
               %td= cbm.score
               %td= cbm.description
-
+              
       %table.table.table-striped
     
     .col-sm-6.col-lg-6.cbm

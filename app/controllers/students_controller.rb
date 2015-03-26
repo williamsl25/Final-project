@@ -51,6 +51,7 @@ before_action :authenticate_user!
     @comment.user = current_user
     if @comment.save
       flash[:notice] = 'Your comment was successfully created.'
+
       # UserMailer.comment_email(current_user, @comment).deliver
       # UserMailer.student_user_comment_email(@student, @comment).deliver
     redirect_to student_path(@student)

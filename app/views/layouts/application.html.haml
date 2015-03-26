@@ -35,7 +35,7 @@
                 %li.active
                   = link_to "Home", root_path
                 %li
-                  %a{:href => "mailto: williamsl25.com?subject=Student Input", :target => "_blank"} Contact
+                  = link_to "About", welcome_about_path 
                 %li.dropdown
                   %a.dropdown-toggle{"aria-expanded" => "false", "data-toggle" => "dropdown", :href => "#", :role => "button"}
                     Reading Interventions

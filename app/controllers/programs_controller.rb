@@ -1,6 +1,6 @@
 class ProgramsController < ApplicationController
   
-  # before_action :authenticate_user!
+  before_action :authenticate_user!
 
   def index
     @programs = Program.all
@@ -35,10 +35,10 @@ class ProgramsController < ApplicationController
     if @comment.save
       # UserMailer.comment_email(current_user, @comment).deliver
       # UserMailer.program_user_comment_email(@program, @comment).deliver
-      flash[:notice] = "comment successsfully saved."
+      flash[:notice] = "A comment about #{@program.name} was successsfully saved."
       redirect_to program_path(@program)
     else
-      flash[:error] = 'comment NOT successfully saved.'
+      flash[:error] = 'A comment about #{@program.name} was NOT successsfully saved.'
       render :new
     end
 

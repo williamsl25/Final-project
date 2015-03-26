@@ -9,16 +9,17 @@ class CbmsController < ApplicationController
     #   format.json { render json: @cbms.to_json }
     # end
   end
-  
+  def edit
+    @student = Student.find params[:id]
+    @cbms = Cbm.all
+  end
   def new
     @cbm = Cbm.new
   end
 
   def show
     set_cbm
-    respond_to do |format|
-      format.json { render json: @cbm.to_json }
-    end
+    
   end
 
   def create
@@ -32,26 +33,20 @@ class CbmsController < ApplicationController
       flash[:error] = 'cbm was NOT saved.'
       render :new
     end
-    # respond_to do |format|
-    #   format.json{ render nothing: true }
-    # end
+    
   end
 
 
   def update
     set_cbm
     @cbm.update_attributes cbm_params
-    respond_to do |format|
-      format.json{ render nothing: true }
-    end
+    
   end
 
   def destroy
     set_cbm
     @cbm.destroy
-    respond_to do |format|
-      format.json{ render nothing: true }
-    end
+    
   end
 
   private
